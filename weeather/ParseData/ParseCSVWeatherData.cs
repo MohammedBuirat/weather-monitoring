@@ -7,7 +7,7 @@ using weeather.Entities;
 
 namespace weather.ReadData
 {
-    internal class ReadCSVWeatherData : WeatherDataType
+    internal class ParseCSVWeatherData : WeatherDataType
     {
 
         public List<WeatherData> GetWeatherData(string csvData)
