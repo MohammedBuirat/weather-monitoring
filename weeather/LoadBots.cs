@@ -5,6 +5,7 @@ namespace weather
 {
     internal class LoadBots
     {
+
         public List<Bot> LoadBotsFromConfigFile()
         {
             string data = ConfigurationFileData();

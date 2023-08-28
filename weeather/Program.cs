@@ -8,8 +8,15 @@ namespace weeather
 {
     internal class Program
     {
+
         static BotManager botManager = new BotManager();
         static void Main(string[] args)
+        {
+            GetBots();
+            EntryPoint();
+        }
+
+        static void GetBots()
         {
             LoadBots loadBots = new LoadBots();
             List<Bot> bots = loadBots.LoadBotsFromConfigFile();
@@ -18,7 +25,6 @@ namespace weeather
                 botManager.Bots.Add(bot);
                 botManager.Attach(new BotObserver(bot));
             }
-            EntryPoint();
         }
 
         static void EntryPoint()
@@ -37,12 +43,26 @@ namespace weeather
                 }
                 else
                 {
-                    string data = File.ReadAllText(input);
-                    ParseData parseData = new ParseData();
-                    WeatherData weatherData = parseData.ParseDataToWeatherList(data);
-                    botManager.Notify(weatherData);
+                    NotifyBotsUsingFileData(fileName: input);
                 }
             }
         }
+
+        static void NotifyBotsUsingFileData(string fileName)
+        {
+            try
+            {
+                string data = File.ReadAllText(fileName);
+                ParseData parseData = new ParseData();
+                WeatherData weatherData = parseData.ParseDataToWeatherList(data);
+                botManager.Notify(weatherData);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
     }
 }

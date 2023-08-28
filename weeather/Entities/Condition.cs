@@ -2,6 +2,7 @@
 {
     internal class Condition
     {
+
         public ConditionType Type { get; set; }
         public decimal Threshold { get; set; }
 
@@ -15,5 +16,6 @@
         {
             return $"Condition: {Type} {Threshold}";
         }
+
     }
 }

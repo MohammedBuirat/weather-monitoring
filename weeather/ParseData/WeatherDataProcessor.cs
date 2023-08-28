@@ -4,6 +4,7 @@ namespace weather.ReadData
 {
     internal class WeatherDataProcessor
     {
+
         private WeatherDataType _dataType;
 
         public WeatherDataProcessor(WeatherDataType dataSource)

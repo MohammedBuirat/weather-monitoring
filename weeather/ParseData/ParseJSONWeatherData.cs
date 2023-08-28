@@ -10,5 +10,6 @@ namespace weather.ReadData
             WeatherData weather = JsonSerializer.Deserialize<WeatherData>(jsonString);
             return weather;
         }
+
     }
 }

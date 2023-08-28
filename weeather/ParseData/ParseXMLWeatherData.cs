@@ -6,6 +6,7 @@ namespace weather.ReadData
             
     internal class ParseXMLWeatherData : WeatherDataType
     {
+
         public WeatherData GetWeatherData(string xmlData)
         {
             WeatherData weather;
@@ -18,5 +19,6 @@ namespace weather.ReadData
 
             return weather;
         }
+
     }
 }

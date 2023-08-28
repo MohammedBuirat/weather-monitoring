@@ -12,6 +12,7 @@ namespace weather.Observables
         {
             _bot = bot;
         }
+
         public void TriggerBot(WeatherData weatherData)
         {
             if (_bot.Enabled)
@@ -22,5 +23,6 @@ namespace weather.Observables
                 }
             }
         }
+
     }
 }

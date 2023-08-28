@@ -1,5 +1,4 @@
-﻿
-namespace weather.Entities
+﻿namespace weather.Entities
 {
     enum ConditionType
     {

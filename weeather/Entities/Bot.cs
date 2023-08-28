@@ -2,6 +2,7 @@
 {
     internal class Bot
     {
+
         public string Name { get; set; }
         public Condition Condition { get; set; }
         public string Message { get; set; }
@@ -48,5 +49,6 @@
         {
             return $"Bot name: {Name}   enabled: {Enabled}  message: {Message}  {Condition.ToString()}";
         }
+
     }
 }
