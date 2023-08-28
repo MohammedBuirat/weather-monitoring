@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using weeather.Entities;
 
 namespace weather.ReadData
-{
+{  
+            
     internal class ParseXMLWeatherData : WeatherDataType
     {
-        public List<WeatherData> GetWeatherData(string xmlData)
+        public WeatherData GetWeatherData(string xmlData)
         {
-            List<WeatherData> personList;
+            WeatherData weather;
             XmlSerializer serializer = new XmlSerializer(typeof(WeatherData));
 
             using (TextReader reader = new StringReader(xmlData))
             {
-                personList = (List<WeatherData>)serializer.Deserialize(reader);
+                weather = (WeatherData)serializer.Deserialize(reader);
             }
-            return personList;
+
+            return weather;
         }
-
-
     }
 }

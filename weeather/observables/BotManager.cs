@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using weather.Entities;
+﻿using weather.Entities;
 using weeather.Entities;
 
 namespace weather.Observables
@@ -22,7 +17,7 @@ namespace weather.Observables
             _observers.Remove(observer);
         }
 
-        public void Notify(IObserver observer,WeatherData weatherData)
+        public void Notify(WeatherData weatherData)
         {
             foreach(var bot in _observers)
             {

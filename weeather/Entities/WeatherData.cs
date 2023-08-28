@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace weeather.Entities
 {
-    internal class WeatherData
+    public class WeatherData
     {
         public string Location { get; set; }
-        public decimal Temparture { get; set; }
+        public decimal Temperature { get; set; }
         public decimal Humidity { get; set; }
         
         public WeatherData() { }
 
-        public WeatherData(string location,  decimal temparture, decimal humidity)
+        public WeatherData(string location,  decimal temperature, decimal humidity)
         {
             Location = location;
-            Temparture = temparture;
+            Temperature = temperature;
             Humidity = humidity;
+        }
+
+        public override string ToString()
+        {
+            return $"{Location}     Temperature:{Temperature}   Humidity:{Humidity}";
         }
 
     }

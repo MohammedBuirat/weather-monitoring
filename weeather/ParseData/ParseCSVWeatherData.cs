@@ -1,30 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using weeather.Entities;
+﻿using weeather.Entities;
 
 namespace weather.ReadData
 {
     internal class ParseCSVWeatherData : WeatherDataType
     {
 
-        public List<WeatherData> GetWeatherData(string csvData)
+        public WeatherData GetWeatherData(string csvData)
         {
-            List<WeatherData> weatherData = new List<WeatherData>();
-            string[] dataRows = ToDataRows(csvData);
-            foreach (string dataRow in dataRows)
-            {
-                weatherData.Add(StringRowToWeatherData(dataRow));
-            }
+            WeatherData weatherData = new WeatherData();
+            weatherData = (StringRowToWeatherData(csvData));
             return weatherData;
-        }
-
-        public string[] ToDataRows(string csvData)
-        {
-            string[] splitted = csvData.Split('\n');
-            return splitted;
         }
 
         public WeatherData StringRowToWeatherData(string dataRow)

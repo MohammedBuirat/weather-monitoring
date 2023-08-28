@@ -4,7 +4,7 @@ namespace weather.ReadData
 {
     internal class ParseData
     {
-        public List<WeatherData> ParseDataToWeatherList(string data)
+        public WeatherData ParseDataToWeatherList(string data)
         {
             WeatherDataProcessor processor = ParsingStrategyPicker(data);
             return processor.ParseDataToWeatherDataList(data);

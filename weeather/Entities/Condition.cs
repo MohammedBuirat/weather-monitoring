@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace weather.Entities
+﻿namespace weather.Entities
 {
     internal class Condition
     {
@@ -15,6 +9,11 @@ namespace weather.Entities
         {
             Type = type;
             Threshold = threshold;
+        }
+
+        public override string ToString()
+        {
+            return $"Condition: {Type} {Threshold}";
         }
     }
 }

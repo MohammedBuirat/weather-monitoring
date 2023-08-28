@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using weeather.Entities;
+﻿using weeather.Entities;
 
 namespace weather.ReadData
 {
@@ -16,7 +11,7 @@ namespace weather.ReadData
             _dataType = dataSource;
         }
 
-        public List<WeatherData> ParseDataToWeatherDataList(string data)
+        public WeatherData ParseDataToWeatherDataList(string data)
         {
             return _dataType.GetWeatherData(data);
         }

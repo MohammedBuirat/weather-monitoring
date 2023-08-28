@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using weeather.Entities;
+﻿using weeather.Entities;
 
 namespace weather.Observables
 {
@@ -11,6 +6,6 @@ namespace weather.Observables
     {
         public void Attach(IObserver observer);
         public void Detach(IObserver observer);
-        public void Notify(IObserver observer, WeatherData weatherData);
+        public void Notify(WeatherData weatherData);
     }
 }

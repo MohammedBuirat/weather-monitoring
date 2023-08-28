@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using weather.Entities;
+﻿using weather.Entities;
 using weeather.Entities;
 
 namespace weather.Observables
@@ -21,7 +16,7 @@ namespace weather.Observables
         {
             if (_bot.Enabled)
             {
-                if (_bot.IsBotActivated(weatherData.Temparture, weatherData.Humidity))
+                if (_bot.IsBotActivated(weatherData.Temperature, weatherData.Humidity))
                 {
                     _bot.PrintMessage();
                 }

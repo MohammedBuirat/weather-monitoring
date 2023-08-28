@@ -2,19 +2,19 @@
   "RainBot": {
     "enabled": true,
     "humidityThreshold": 70,
-    "conditionAboveTheThreshhold": true,
+    "conditionAboveTheThreshold": true,
     "message": "It looks like it's about to pour down!"
   },
   "SunBot": {
     "enabled": true,
     "temperatureThreshold": 30,
-    "conditionAboveTheThreshhold": true,
+    "conditionAboveTheThreshold": true,
     "message": "Wow, it's a scorcher out there!"
   },
   "SnowBot": {
     "enabled": false,
     "temperatureThreshold": 0,
-    "conditionAboveTheThreshhold": false,
+    "conditionAboveTheThreshold": false,
     "message": "Brrr, it's getting chilly!"
   }
 }

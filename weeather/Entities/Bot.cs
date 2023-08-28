@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace weather.Entities
+﻿namespace weather.Entities
 {
     internal class Bot
     {
@@ -48,6 +42,11 @@ namespace weather.Entities
         {
             Console.WriteLine($"{Name} activated!");
             Console.WriteLine($"{Name}:\" {Message} \"");
+        }
+
+        public override string ToString()
+        {
+            return $"Bot name: {Name}   enabled: {Enabled}  message: {Message}  {Condition.ToString()}";
         }
     }
 }

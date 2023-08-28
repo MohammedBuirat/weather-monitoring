@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using weather.Entities;
 
 namespace weather
@@ -13,12 +8,12 @@ namespace weather
         public List<Bot> LoadBotsFromConfigFile()
         {
             string data = ConfigurationFileData();
-            return new List<Bot>();
+            return ParseToBots(data);
         }
 
         private string ConfigurationFileData()
         {
-            string fileData = File.ReadAllText("config.json");
+            string fileData = File.ReadAllText("../../../config.json");
             return fileData;
         }
 
@@ -27,27 +22,28 @@ namespace weather
         private List<Bot> ParseToBots(string data)
         {
             List<Bot> bots = new List<Bot>();
-            var botConfigurations = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(data);
+            var botConfigurations = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(data);
             foreach (var bot in botConfigurations)
             {
+                string name = bot.Key;
+                var botProperties = bot.Value;
                 decimal threshold;
                 ConditionType conditionType;
-                if (bot.Value.TryGetProperty("humidityThreshold"))
+                if (botProperties.TryGetProperty("humidityThreshold", out var humidityThreshold))
                 {
-                    threshold = bot.Value.TryGetProperty("humidityThreshold");
+                    threshold = humidityThreshold.GetDecimal();
                     conditionType = ConditionType.Humidity;
                 }
                 else
                 {
-                    threshold = bot.Value.TryGetProperty("temperatureThreshold");
+                    threshold = botProperties.GetProperty("temperatureThreshold").GetDecimal();
                     conditionType = ConditionType.Temperature;
                 }
                 Condition condition = new Condition(conditionType, threshold);
-                bool enabled = bot.Value.TryGetProperty("enabled");
-                bool conditionAboveTheThreshhold = bot.Value.TryGetProperty("conditionAboveTheThreshhold");
-                string message = bot.Value.ToString("message");
-                string name = bot.Key;
-                Bot newBot = new Bot(name, condition, message, enabled, conditionAboveTheThreshhold);
+                bool enabled = botProperties.GetProperty("enabled").GetBoolean();
+                bool conditionAboveTheThreshold = botProperties.GetProperty("conditionAboveTheThreshold").GetBoolean();
+                string message = botProperties.GetProperty("message").GetString();
+                Bot newBot = new Bot(name, condition, message, enabled, conditionAboveTheThreshold);
                 bots.Add(newBot);
             }
             return bots;
