@@ -40,11 +40,10 @@ namespace weather
                     threshold = botProperties.GetProperty("temperatureThreshold").GetDecimal();
                     conditionType = ConditionType.Temperature;
                 }
-                Condition condition = new Condition(conditionType, threshold);
                 bool enabled = botProperties.GetProperty("enabled").GetBoolean();
                 bool conditionAboveTheThreshold = botProperties.GetProperty("conditionAboveTheThreshold").GetBoolean();
                 string message = botProperties.GetProperty("message").GetString();
-                Bot newBot = new Bot(name, condition, message, enabled, conditionAboveTheThreshold);
+                Bot newBot = new Bot(name, message, enabled, conditionAboveTheThreshold, conditionType, threshold);
                 bots.Add(newBot);
             }
             return bots;

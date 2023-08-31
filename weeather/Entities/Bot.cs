@@ -6,18 +6,20 @@ namespace weather.Entities
     {
 
         public string Name { get; set; }
-        public Condition Condition { get; set; }
         public string Message { get; set; }
         public bool Enabled { get; set; }
         bool ConditionAboveTheThreshhold { get; set; }
+        public ConditionType TypeOfCondition { get; set; }
+        public decimal Threshold { get; set; }
 
-        public Bot(string botName, Condition condition, string message, bool enabled, bool conditionAboveTheThreshhold)
+        public Bot(string name, string message, bool enabled, bool conditionAboveTheThreshhold, ConditionType typeOfCondition, decimal threshold)
         {
-            Name = botName;
-            Condition = condition;
+            Name = name;
             Message = message;
             Enabled = enabled;
             ConditionAboveTheThreshhold = conditionAboveTheThreshhold;
+            TypeOfCondition = typeOfCondition;
+            Threshold = threshold;
         }
 
         public bool IsBotActivated(WeatherData weatherData)
@@ -27,11 +29,11 @@ namespace weather.Entities
                 return false;
             }
             bool valid = false;
-            if (Condition.Type == ConditionType.Temperature)
+            if (TypeOfCondition == ConditionType.Temperature)
             {
                 valid = TriggerCondition(weatherData.Temperature);
             }
-            else if (Condition.Type == ConditionType.Humidity)
+            else if (TypeOfCondition == ConditionType.Humidity)
             {
                 valid = TriggerCondition(weatherData.Humidity);
             }
@@ -40,8 +42,8 @@ namespace weather.Entities
 
         private bool TriggerCondition(decimal value)
         {
-            bool isMoreThanThreshold = ConditionAboveTheThreshhold && (value > Condition.Threshold);
-            bool lessThanThreshold = !ConditionAboveTheThreshhold && (value < Condition.Threshold);
+            bool isMoreThanThreshold = ConditionAboveTheThreshhold && (value > Threshold);
+            bool lessThanThreshold = !ConditionAboveTheThreshhold && (value < Threshold);
             return isMoreThanThreshold || lessThanThreshold;
         }
 
@@ -49,7 +51,7 @@ namespace weather.Entities
 
         public override string ToString()
         {
-            return $"Bot name: {Name}   enabled: {Enabled}  message: {Message}  {Condition.ToString()}";
+            return $"Bot name: {Name}   enabled: {Enabled}  message: {Message}  {TypeOfCondition.ToString()}    {Threshold}";
         }
 
     }
