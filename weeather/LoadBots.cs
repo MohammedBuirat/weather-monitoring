@@ -8,11 +8,11 @@ namespace weather
 
         public List<Bot> LoadBotsFromConfigFile()
         {
-            string data = GetConfigurationFileData();
+            string data = LoadConfigFileData();
             return ParseStringToBots(data);
         }
 
-        private string GetConfigurationFileData()
+        private string LoadConfigFileData()
         {
             string fileData = File.ReadAllText("../../../config.json");
             return fileData;
