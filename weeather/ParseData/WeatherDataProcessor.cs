@@ -5,16 +5,16 @@ namespace weather.ReadData
     internal class WeatherDataProcessor
     {
 
-        private WeatherDataType _dataType;
+        private WeatherDataParsingStrategy _dataType;
 
-        public WeatherDataProcessor(WeatherDataType dataSource)
+        public WeatherDataProcessor(WeatherDataParsingStrategy dataSource)
         {
             _dataType = dataSource;
         }
 
-        public WeatherData ParseDataToWeatherDataList(string data)
+        public WeatherData ParseDataToWeatherData(string data)
         {
-            return _dataType.GetWeatherData(data);
+            return _dataType.ParseWeatherDataFromDataString(data);
         }
 
     }

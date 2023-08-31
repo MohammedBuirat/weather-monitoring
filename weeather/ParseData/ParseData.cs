@@ -4,16 +4,16 @@ namespace weather.ReadData
 {
     internal class ParseData
     {
-        public WeatherData ParseDataToWeatherList(string data)
+        public WeatherData ParseDataToWeather(string data)
         {
             WeatherDataProcessor processor = ParsingStrategyPicker(data);
-            return processor.ParseDataToWeatherDataList(data);
+            return processor.ParseDataToWeatherData(data);
         }
 
         WeatherDataProcessor ParsingStrategyPicker(string data)
         {
             WeatherDataProcessor processor;
-            WeatherDataType dataType;
+            WeatherDataParsingStrategy dataType;
             if (IsXml(data))
             {
                 dataType = new ParseXMLWeatherData();

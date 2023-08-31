@@ -1,4 +1,5 @@
-﻿using weather.Entities;
+﻿using System.Xml.Linq;
+using weather.Entities;
 using weeather.Entities;
 
 namespace weather.Observables
@@ -15,13 +16,16 @@ namespace weather.Observables
 
         public void TriggerBot(WeatherData weatherData)
         {
-            if (_bot.Enabled)
+            if (_bot.IsBotActivated(weatherData))
             {
-                if (_bot.IsBotActivated(weatherData.Temperature, weatherData.Humidity))
-                {
-                    _bot.PrintMessage();
-                }
+                NotifyBot(_bot);
             }
+        }
+
+        private void NotifyBot(Bot bot)
+        {
+            Console.WriteLine($"{bot.Name} activated!");
+            Console.WriteLine($"{bot.Name}:\" {bot.Message} \"");
         }
 
     }

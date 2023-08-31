@@ -54,7 +54,7 @@ namespace weeather
             {
                 string data = File.ReadAllText(fileName);
                 ParseData parseData = new ParseData();
-                WeatherData weatherData = parseData.ParseDataToWeatherList(data);
+                WeatherData weatherData = parseData.ParseDataToWeather(data);
                 botManager.Notify(weatherData);
             }
             catch (Exception e)

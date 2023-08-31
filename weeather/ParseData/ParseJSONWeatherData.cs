@@ -3,12 +3,12 @@ using weeather.Entities;
 
 namespace weather.ReadData
 {
-    internal class ParseJSONWeatherData : WeatherDataType
+    internal class ParseJSONWeatherData : WeatherDataParsingStrategy
     {
-        public WeatherData GetWeatherData(string jsonString)
+        public WeatherData ParseWeatherDataFromDataString(string jsonString)
         {
-            WeatherData weather = JsonSerializer.Deserialize<WeatherData>(jsonString);
-            return weather;
+            WeatherData weatherData = JsonSerializer.Deserialize<WeatherData>(jsonString);
+            return weatherData;
         }
 
     }

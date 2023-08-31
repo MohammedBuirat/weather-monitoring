@@ -1,4 +1,6 @@
-﻿namespace weather.Entities
+﻿using weeather.Entities;
+
+namespace weather.Entities
 {
     internal class Bot
     {
@@ -18,16 +20,20 @@
             ConditionAboveTheThreshhold = conditionAboveTheThreshhold;
         }
 
-        public bool IsBotActivated(decimal temperature, decimal humidity)
+        public bool IsBotActivated(WeatherData weatherData)
         {
+            if (!Enabled)
+            {
+                return false;
+            }
             bool valid = false;
             if (Condition.Type == ConditionType.Temperature)
             {
-                valid = TriggerCondition(temperature);
+                valid = TriggerCondition(weatherData.Temperature);
             }
             else if (Condition.Type == ConditionType.Humidity)
             {
-                valid = TriggerCondition(humidity);
+                valid = TriggerCondition(weatherData.Humidity);
             }
             return valid;
         }
@@ -39,11 +45,7 @@
             return isMoreThanThreshold || lessThanThreshold;
         }
 
-        public void PrintMessage()
-        {
-            Console.WriteLine($"{Name} activated!");
-            Console.WriteLine($"{Name}:\" {Message} \"");
-        }
+
 
         public override string ToString()
         {

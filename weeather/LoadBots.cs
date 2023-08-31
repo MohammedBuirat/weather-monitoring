@@ -8,11 +8,11 @@ namespace weather
 
         public List<Bot> LoadBotsFromConfigFile()
         {
-            string data = ConfigurationFileData();
-            return ParseToBots(data);
+            string data = GetConfigurationFileData();
+            return ParseStringToBots(data);
         }
 
-        private string ConfigurationFileData()
+        private string GetConfigurationFileData()
         {
             string fileData = File.ReadAllText("../../../config.json");
             return fileData;
@@ -20,7 +20,7 @@ namespace weather
 
         //here i had to do it like this since i will not be able to pass the bot in 
         //bitConfiguration to a new method which caused me to preform all the work in a single method
-        private List<Bot> ParseToBots(string data)
+        private List<Bot> ParseStringToBots(string data)
         {
             List<Bot> bots = new List<Bot>();
             var botConfigurations = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(data);

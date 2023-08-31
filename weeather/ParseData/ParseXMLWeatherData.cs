@@ -4,10 +4,10 @@ using weeather.Entities;
 namespace weather.ReadData
 {  
             
-    internal class ParseXMLWeatherData : WeatherDataType
+    internal class ParseXMLWeatherData : WeatherDataParsingStrategy
     {
 
-        public WeatherData GetWeatherData(string xmlData)
+        public WeatherData ParseWeatherDataFromDataString(string xmlData)
         {
             WeatherData weather;
             XmlSerializer serializer = new XmlSerializer(typeof(WeatherData));
