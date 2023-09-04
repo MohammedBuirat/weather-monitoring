@@ -4,19 +4,25 @@ using weeather.Entities;
 namespace weather.ReadData
 {  
             
-    internal class ParseXMLWeatherData : WeatherDataParsingStrategy
+    public class ParseXMLWeatherData : WeatherDataParsingStrategy
     {
 
         public WeatherData ParseWeatherDataFromDataString(string xmlData)
         {
             WeatherData weather;
-            XmlSerializer serializer = new XmlSerializer(typeof(WeatherData));
-
-            using (TextReader reader = new StringReader(xmlData))
+            try
             {
-                weather = (WeatherData)serializer.Deserialize(reader);
-            }
+                XmlSerializer serializer = new XmlSerializer(typeof(WeatherData));
 
+                using (TextReader reader = new StringReader(xmlData))
+                {
+                    weather = (WeatherData)serializer.Deserialize(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in the data format", ex);
+            }
             return weather;
         }
 

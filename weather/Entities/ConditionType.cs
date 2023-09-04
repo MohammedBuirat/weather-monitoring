@@ -1,6 +1,6 @@
 ﻿namespace weather.Entities
 {
-    enum ConditionType
+    public enum ConditionType
     {
         Humidity,
         Temperature

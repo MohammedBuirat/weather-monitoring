@@ -2,7 +2,7 @@
 
 namespace weather.ReadData
 {
-    internal class ParseCSVWeatherData : WeatherDataParsingStrategy
+    public class ParseCSVWeatherData : WeatherDataParsingStrategy
     {
 
         public WeatherData ParseWeatherDataFromDataString(string csvData)
@@ -11,7 +11,6 @@ namespace weather.ReadData
             weatherData = (ParseCSVStringToWeatherData(csvData));
             return weatherData;
         }
-
         public WeatherData ParseCSVStringToWeatherData(string dataRow)
         {
             string[] splitted = dataRow.Split(',');

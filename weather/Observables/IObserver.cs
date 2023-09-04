@@ -2,7 +2,7 @@
 
 namespace weather.Observables
 {
-    internal interface IObserver
+    public interface IObserver
     {
 
         void TriggerBot(WeatherData weatherData);

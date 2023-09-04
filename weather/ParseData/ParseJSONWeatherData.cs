@@ -3,7 +3,7 @@ using weeather.Entities;
 
 namespace weather.ReadData
 {
-    internal class ParseJSONWeatherData : WeatherDataParsingStrategy
+    public class ParseJSONWeatherData : WeatherDataParsingStrategy
     {
         public WeatherData ParseWeatherDataFromDataString(string jsonString)
         {

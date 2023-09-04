@@ -4,7 +4,7 @@ using weeather.Entities;
 
 namespace weather.Observables
 {
-    internal class BotObserver : IObserver
+    public class BotObserver : IObserver
     {
 
         private Bot _bot;
