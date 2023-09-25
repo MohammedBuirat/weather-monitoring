@@ -6,11 +6,11 @@ namespace weather.ReadData
     {
         public WeatherData ParseDataToWeather(string data)
         {
-            WeatherDataProcessor processor = ParsingStrategyPicker(data);
+            WeatherDataProcessor processor = PickParsingStrategy(data);
             return processor.ParseDataToWeatherData(data);
         }
 
-        WeatherDataProcessor ParsingStrategyPicker(string data)
+        WeatherDataProcessor PickParsingStrategy(string data)
         {
             WeatherDataProcessor processor;
             WeatherDataParsingStrategy dataType;

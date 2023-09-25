@@ -3,7 +3,7 @@ using weeather.Entities;
 
 namespace weather.Observables
 {
-    internal class BotManager : IObservable
+    public class BotManager : IObservable
     {
 
         private List<IObserver> _observers = new List<IObserver>();

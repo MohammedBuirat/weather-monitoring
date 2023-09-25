@@ -2,7 +2,7 @@
 
 namespace weather.ReadData
 {
-    internal interface WeatherDataParsingStrategy
+    public interface WeatherDataParsingStrategy
     {
         WeatherData ParseWeatherDataFromDataString(string data);
 

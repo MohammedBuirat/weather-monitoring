@@ -2,7 +2,7 @@
 
 namespace weather.Observables
 {
-    internal interface IObservable
+    public interface IObservable
     {
 
         public void Attach(IObserver observer);

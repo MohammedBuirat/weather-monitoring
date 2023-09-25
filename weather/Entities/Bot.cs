@@ -2,13 +2,13 @@
 
 namespace weather.Entities
 {
-    internal class Bot
+    public class Bot
     {
 
         public string Name { get; set; }
         public string Message { get; set; }
         public bool Enabled { get; set; }
-        bool ConditionAboveTheThreshhold { get; set; }
+        public bool ConditionAboveTheThreshhold { get; set; }
         public ConditionType TypeOfCondition { get; set; }
         public decimal Threshold { get; set; }
 
